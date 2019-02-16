@@ -4,7 +4,7 @@
    [com.stuartsierra.component :as component]
    [garden.core]
    [nedap.utils.modular.api :refer [implement]]
-   [nedap.utils.io.api :refer [copy-file-from-resource ensure-directory-exists running-in-jar?]]
+   [nedap.utils.io.api :refer [copy-file-from-resource ensure-directory-exists]]
    [stefon.core :as stefon]
    [nedap.utils.spec.api :refer [check!]]
    [nedap.utils.speced :as speced]
@@ -38,6 +38,8 @@
 (defn start [this]
   (compile-assets! this)
   this)
+
+(spec/def ::compiler (spec/keys :req-un [::output-to]))
 
 (speced/def-with-doc ::garden-options
   "A Garden build as per its official doc. Only :compiler and :stylesheet will be used, you can omit the rest."
