@@ -62,7 +62,7 @@ to the filenames that will be created in your project (e.g. javascript/webjars/t
   (spec/map-of string? string?))
 
 (spec/def ::webjar-options (spec/keys :req-un [::webjars.mappings]
-                                      :opt-un [:webjars.asset-directory]))
+                                      :opt-un [::webjars.asset-directory]))
 
 (spec/def ::component (spec/keys :req-un [::garden-options ::stefon-options ::webjar-options]))
 
