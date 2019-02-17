@@ -58,7 +58,9 @@ extracting them from .jars, for later processing by Stefon."
   "Maps WebJars resource names (e.g.: META-INF/resources/webjars/tether/1.4.0/js/tether.js) that you want to consume,
 to the filenames that will be created in your project (e.g. javascript/webjars/tether.js).
 
-:webjars.asset-directory is used as a prefix."
+:webjars.asset-directory is used as a prefix.
+
+You can use `print-all-webjar-assets` in order to figure out the resource names."
   (spec/map-of string? string?))
 
 (spec/def ::webjar-options (spec/keys :req-un [::webjars.mappings]

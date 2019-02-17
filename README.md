@@ -12,7 +12,7 @@ Note that no default options are provided for Stefon/Garden, as those will vary 
 ## Installation
 
 ```clojure
-[com.nedap.staffing-solutions/components.assets "0.1.2"]
+[com.nedap.staffing-solutions/components.assets "0.1.3"]
 ````
 
 ## ns organisation
@@ -20,8 +20,6 @@ Note that no default options are provided for Stefon/Garden, as those will vary 
 There is exactly 1 namespace meant for public consumption:
 
 * `nedap.components.assets.component`
-
-By convention, `api` namespaces are deliberately thin so you can browse them comfortably.
 
 ## Documentation
 
