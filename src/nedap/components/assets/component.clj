@@ -54,8 +54,8 @@ You can use `print-all-webjar-assets` in order to figure out the resource names.
   (let [{:keys [compiler stylesheet]} config]
     (garden.core/css compiler stylesheet)))
 
-(defn copy-webjars! [{mappings :webjars.mappings
-                      asset-directory :webjars.asset-directory}]
+(defn copy-webjars! [{mappings ::webjars.mappings
+                      asset-directory ::webjars.asset-directory}]
   {:pre [(check! ::webjars.mappings mappings
                  ::webjars.asset-directory asset-directory)]}
   (let [asset-directory (or asset-directory "resources/assets/")]

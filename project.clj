@@ -1,4 +1,4 @@
-(defproject com.nedap.staffing-solutions/components.assets "0.2.2"
+(defproject com.nedap.staffing-solutions/components.assets "0.2.3"
   :description "Clojure Component bundling Stefon, Garden and WebJars functionality."
   :url "https://github.com/nedap/components.assets"
   :license {:name "Eclipse Public License"
