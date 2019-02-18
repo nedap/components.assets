@@ -63,12 +63,12 @@ to the filenames that will be created in your project (e.g. javascript/webjars/t
 You can use `print-all-webjar-assets` in order to figure out the resource names."
   (spec/map-of string? string?))
 
-(spec/def ::webjar-options (spec/keys :req-un [::webjars.mappings]
-                                      :opt-un [::webjars.asset-directory]))
+(spec/def ::webjar-options (spec/keys :req [::webjars.mappings]
+                                      :opt [::webjars.asset-directory]))
 
-(spec/def ::component (spec/keys :req-un [::garden-options ::stefon-options ::webjar-options]))
+(spec/def ::component (spec/keys :req [::garden-options ::stefon-options ::webjar-options]))
 
-(defn new [{:keys [garden-options stefon-options webjar-options]
+(defn new [{::keys [garden-options stefon-options webjar-options]
             :as this}]
   {:pre [(check! ::component this)]}
   (implement this
