@@ -70,7 +70,8 @@ You can use `print-all-webjar-assets` in order to figure out the resource names.
   (stefon/precompile stefon-options))
 
 (defn start [this]
-  (compile-assets! this)
+  (with-out-str ;; silence Garden
+    (compile-assets! this))
   this)
 
 (defn new [{::keys [garden-options stefon-options webjar-options]
