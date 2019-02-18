@@ -15,6 +15,10 @@ Note that no default options are provided for Stefon/Garden, as those will vary 
 [com.nedap.staffing-solutions/components.assets "0.1.3"]
 ````
 
+#### NOTE
+
+You may have to apply ` exclusions [com.google.guava/guava com.google.protobuf/protobuf-java com.google.javascript/closure-compiler]` in order to prevent a ClojureScript compilation from popping up (which doesn't make sense in a JVM project) and failing the build.
+
 ## ns organisation
 
 There is exactly 1 namespace meant for public consumption:
