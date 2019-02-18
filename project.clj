@@ -1,4 +1,4 @@
-(defproject com.nedap.staffing-solutions/components.assets "0.2.0"
+(defproject com.nedap.staffing-solutions/components.assets "0.2.1"
   :description "Clojure Component bundling Stefon, Garden and WebJars functionality."
   :url "https://github.com/nedap/components.assets"
   :license {:name "Eclipse Public License"
@@ -12,7 +12,7 @@
                     {:username :env/artifactory_user
                      :password :env/artifactory_pass}}
   :dependencies [[com.nedap.staffing-solutions/stefon "0.5.0"]
-                 [com.nedap.staffing-solutions/utils.io "0.1.0"]
+                 [com.nedap.staffing-solutions/utils.io "0.1.1"]
                  [com.nedap.staffing-solutions/utils.modular "0.1.1"]
                  [com.stuartsierra/component "0.4.0"]
                  [garden "1.3.5"]

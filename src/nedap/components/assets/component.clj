@@ -30,7 +30,7 @@
     (copy-file-from-resource webjar-name
                              (str asset-directory asset-name))))
 
-(defn compile-assets! [{:keys [garden-options stefon-options webjar-options]}]
+(defn compile-assets! [{::keys [garden-options stefon-options webjar-options]}]
   (copy-webjars! webjar-options)
   (compile-css! garden-options)
   (stefon/precompile stefon-options))

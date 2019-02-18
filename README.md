@@ -12,7 +12,7 @@ Note that no default options are provided for Stefon/Garden, as those will vary 
 ## Installation
 
 ```clojure
-[com.nedap.staffing-solutions/components.assets "0.1.3"]
+[com.nedap.staffing-solutions/components.assets "0.2.1"]
 ````
 
 #### NOTE
