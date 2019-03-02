@@ -14,6 +14,12 @@
 
 (spec/def ::compiler (spec/keys :req-un [::output-to]))
 
+(speced/def-with-doc ::run-in-background?
+  "Whould the component run in background as it `start`s, returing immediately?
+
+This option is only apt for development."
+  boolean?)
+
 (speced/def-with-doc ::garden-options
   "A Garden build as per its official doc. Only :compiler and :stylesheet will be used, you can omit the rest."
   (spec/keys :req-un [::compiler ::stylesheet]))
@@ -39,7 +45,8 @@ You can use `print-all-webjar-assets` in order to figure out the resource names.
 (spec/def ::webjar-options (spec/keys :req [::webjars.mappings]
                                       :opt [::webjars.asset-directory]))
 
-(spec/def ::component (spec/keys :req [::garden-options ::stefon-options ::webjar-options]))
+(spec/def ::component (spec/keys :req [::garden-options ::stefon-options ::webjar-options]
+                                 :opt [::run-in-background?]))
 
 (defn print-all-webjar-assets
   "Prints all available WebJars assets available in the classpath.
@@ -54,7 +61,7 @@ You can use `print-all-webjar-assets` in order to figure out the resource names.
   (let [{:keys [compiler stylesheet]} config]
     (garden.core/css compiler stylesheet)))
 
-(defn copy-webjars! [{mappings ::webjars.mappings
+(defn copy-webjars! [{mappings        ::webjars.mappings
                       asset-directory ::webjars.asset-directory}]
   {:pre [(check! ::webjars.mappings mappings
                  ::webjars.asset-directory asset-directory)]}
@@ -69,14 +76,20 @@ You can use `print-all-webjar-assets` in order to figure out the resource names.
   (compile-css! garden-options)
   (stefon/precompile stefon-options))
 
-(defn start [this]
-  (with-out-str ;; silence Garden
-    (compile-assets! this))
-  this)
+(defn start [{::keys [run-in-background?]
+              :as    this}]
+  (letfn [(impl []
+            (with-out-str ;; silence Garden
+              (compile-assets! this)))]
+    (if run-in-background?
+      (future
+        (impl))
+      (impl))
+    this))
 
 (defn new [{::keys [garden-options stefon-options webjar-options]
-            :as this}]
+            :as    this}]
   {:pre [(check! ::component this)]}
   (implement this
              component/start start
-             component/stop identity))
+             component/stop  identity))

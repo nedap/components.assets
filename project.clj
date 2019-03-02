@@ -1,12 +1,12 @@
-(defproject com.nedap.staffing-solutions/components.assets "0.2.4"
+(defproject com.nedap.staffing-solutions/components.assets "0.3.0"
   :description "Clojure Component bundling Stefon, Garden and WebJars functionality."
   :url "https://github.com/nedap/components.assets"
   :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :repositories {"releases"       {:url      "https://nedap.jfrog.io/nedap/staffing-solutions/"
-                                   :username :env/artifactory_user
-                                   :password :env/artifactory_pass}}
-  :deploy-repositories [["releases" {:url "https://nedap.jfrog.io/nedap/staffing-solutions/"
+            :url  "http://www.eclipse.org/legal/epl-v10.html"}
+  :repositories {"releases" {:url      "https://nedap.jfrog.io/nedap/staffing-solutions/"
+                             :username :env/artifactory_user
+                             :password :env/artifactory_pass}}
+  :deploy-repositories [["releases" {:url           "https://nedap.jfrog.io/nedap/staffing-solutions/"
                                      :sign-releases false}]]
   :repository-auth {#"https://nedap.jfrog\.io/nedap/staffing-solutions/"
                     {:username :env/artifactory_user
