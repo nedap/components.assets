@@ -1,14 +1,13 @@
 (ns nedap.components.assets.component
   (:require
    [clojure.pprint]
+   [clojure.spec.alpha :as spec]
    [com.stuartsierra.component :as component]
    [garden.core]
-   [nedap.utils.modular.api :refer [implement]]
+   [nedap.speced.def :as speced]
    [nedap.utils.io.api :refer [copy-file-from-resource ensure-directory-exists]]
-   [stefon.core :as stefon]
-   [nedap.utils.spec.api :refer [check!]]
-   [nedap.utils.speced :as speced]
-   [clojure.spec.alpha :as spec])
+   [nedap.utils.modular.api :refer [implement]]
+   [stefon.core :as stefon])
   (:import
    (org.webjars WebJarAssetLocator)))
 
@@ -55,23 +54,21 @@ You can use `print-all-webjar-assets` in order to figure out the resource names.
   []
   (-> (WebJarAssetLocator.) (.listAssets "") sort clojure.pprint/pprint))
 
-(defn compile-css! [config]
-  {:pre [(check! ::garden-options config)]}
+(speced/defn compile-css! [^::garden-options config]
   (-> config :compiler :output-to ensure-directory-exists)
   (let [{:keys [compiler stylesheet]} config]
     (garden.core/css compiler stylesheet)))
 
-(defn copy-webjars! [{mappings        ::webjars.mappings
-                      asset-directory ::webjars.asset-directory}]
-  {:pre [(check! ::webjars.mappings mappings
-                 ::webjars.asset-directory asset-directory)]}
+(speced/defn copy-webjars! [{^::webjars.mappings mappings               ::webjars.mappings
+                             ^::webjars.asset-directory asset-directory ::webjars.asset-directory}]
   (let [asset-directory (or asset-directory "resources/assets/")]
     (doseq [[webjar-name asset-name] mappings]
       (copy-file-from-resource webjar-name
                                (str asset-directory asset-name)))))
 
-(defn compile-assets! [{::keys [garden-options stefon-options webjar-options]}]
-  {:pre [(check! ::stefon-options stefon-options)]}
+(speced/defn compile-assets! [{::keys [garden-options
+                                       ^::stefon-options stefon-options
+                                       webjar-options]}]
   (copy-webjars! webjar-options)
   (compile-css! garden-options)
   (stefon/precompile stefon-options))
@@ -87,9 +84,8 @@ You can use `print-all-webjar-assets` in order to figure out the resource names.
       (impl))
     this))
 
-(defn new [{::keys [garden-options stefon-options webjar-options]
-            :as    this}]
-  {:pre [(check! ::component this)]}
+(speced/defn new [{::keys [garden-options stefon-options webjar-options]
+                   :as    ^::component this}]
   (implement this
-             component/start start
-             component/stop  identity))
+    component/start start
+    component/stop  identity))
