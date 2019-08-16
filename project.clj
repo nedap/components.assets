@@ -8,8 +8,10 @@
                  [com.nedap.staffing-solutions/utils.modular "2.0.0"]
                  [com.stuartsierra/component "0.4.0"]
                  [garden "1.3.5"]
+                 [org.apache.commons/commons-compress "1.18"]
                  [org.clojure/clojure "1.10.1"]
-                 [org.webjars/webjars-locator "0.27"]
+                 [org.webjars/webjars-locator "0.27"
+                  :exclusions [org.apache.commons/commons-compress]]
                  ;; Stefon needs it. We ensure a recent version is used, as the default (older) has an issue:
                  [ring/ring-core "1.5.0"]]
 
