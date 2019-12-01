@@ -1,7 +1,7 @@
 ;; Please don't bump the library version by hand - use ci.release-workflow instead.
 (defproject com.nedap.staffing-solutions/components.assets "1.0.1"
   ;; Please keep the dependencies sorted a-z.
-  :dependencies [[com.nedap.staffing-solutions/stefon "0.5.0"
+  :dependencies [[com.nedap.staffing-solutions/stefon "0.5.1"
                   :exclusions [clj-time commons-codec com.fasterxml.jackson.core/jackson-core]]
                  [com.nedap.staffing-solutions/utils.io "1.0.0"
                   :exclusions [org.apache.commons/commons-compress]]
