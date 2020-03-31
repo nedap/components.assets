@@ -1,4 +1,4 @@
-# nedap.components.assets
+# components.assets
 
 A Component bundling [Stefon](https://github.com/nedap/stefon), [Garden](https://github.com/noprompt/lein-garden/) and [WebJars](https://www.webjars.org/) functionality.
 Apt for development and production.
@@ -33,4 +33,4 @@ Please browse the public namespaces, which are documented and speced.
 
 Copyright © Nedap
 
-This program and the accompanying materials are made available under the terms of the Eclipse Public License 2.0 which is available at http://www.eclipse.org/legal/epl-2.0.
+This program and the accompanying materials are made available under the terms of the [Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0).
