@@ -23,7 +23,7 @@ This option is only apt for development."
   "A Garden build as per its official doc. Only :compiler and :stylesheet will be used, you can omit the rest."
   (spec/keys :req-un [::compiler ::stylesheet]))
 
-(speced/def-with-doc ::garden-options-collection
+(speced/def-with-doc ::garden-options-coll
   "A collection of garden options."
   (spec/coll-of ::garden-options :min-count 1))
 
@@ -48,7 +48,7 @@ You can use `print-all-webjar-assets` in order to figure out the resource names.
 (spec/def ::webjar-options (spec/keys :req [::webjars.mappings]
                                       :opt [::webjars.asset-directory]))
 
-(spec/def ::component (spec/keys :req [::garden-options-collection ::stefon-options ::webjar-options]
+(spec/def ::component (spec/keys :req [::garden-options-coll ::stefon-options ::webjar-options]
                                  :opt [::run-in-background?]))
 
 (defn print-all-webjar-assets
@@ -70,11 +70,11 @@ You can use `print-all-webjar-assets` in order to figure out the resource names.
       (copy-file-from-resource webjar-name
                                (str asset-directory asset-name)))))
 
-(speced/defn compile-assets! [{::keys [garden-options-collection
+(speced/defn compile-assets! [{::keys [garden-options-coll
                                        ^::stefon-options stefon-options
                                        webjar-options]}]
   (copy-webjars! webjar-options)
-  (doseq [garden-options garden-options-collection]
+  (doseq [garden-options garden-options-coll]
     (compile-css! garden-options))
   (stefon/precompile stefon-options))
 
