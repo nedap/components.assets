@@ -1,5 +1,5 @@
 ;; Please don't bump the library version by hand - use ci.release-workflow instead.
-(defproject com.nedap.staffing-solutions/components.assets "3.0.0"
+(defproject com.nedap.staffing-solutions/components.assets "3.0.1-alpha1"
   ;; Please keep the dependencies sorted a-z.
   :dependencies [[com.nedap.staffing-solutions/stefon "0.5.2"
                   :exclusions [clj-time commons-codec com.fasterxml.jackson.core/jackson-core]]
