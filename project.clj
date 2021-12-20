@@ -3,11 +3,11 @@
   ;; Please keep the dependencies sorted a-z.
   :dependencies [[com.nedap.staffing-solutions/stefon "0.5.2"
                   :exclusions [clj-time commons-codec com.fasterxml.jackson.core/jackson-core]]
-                 [com.nedap.staffing-solutions/utils.io "1.1.0"
+                 [com.nedap.staffing-solutions/utils.io "2.0.0"
                   :exclusions [com.nedap.staffing-solutions/speced.def
                                org.apache.commons/commons-compress]]
                  [com.nedap.staffing-solutions/speced.def "2.0.0"]
-                 [com.nedap.staffing-solutions/utils.modular "2.2.0-alpha3"]
+                 [com.nedap.staffing-solutions/utils.modular "2.2.0"]
                  [com.stuartsierra/component "0.4.0"]
                  [garden "1.3.5"]
                  [org.apache.commons/commons-compress "1.18"]
@@ -16,6 +16,8 @@
                   :exclusions [org.apache.commons/commons-compress]]
                  ;; Stefon needs it. We ensure a recent version is used, as the default (older) has an issue:
                  [ring/ring-core "1.5.0"]]
+
+  :managed-dependencies [[org.clojure/tools.cli "1.0.194"]]
 
   :description "Clojure Component bundling Stefon, Garden and WebJars functionality."
 
@@ -27,14 +29,6 @@
             :url  "https://www.eclipse.org/legal/epl-2.0/"}
 
   :signing {:gpg-key "releases-staffingsolutions@nedap.com"}
-
-  :repositories {"releases" {:url      "https://nedap.jfrog.io/nedap/staffing-solutions/"
-                             :username :env/artifactory_user
-                             :password :env/artifactory_pass}}
-
-  :repository-auth {#"https://nedap.jfrog\.io/nedap/staffing-solutions/"
-                    {:username :env/artifactory_user
-                     :password :env/artifactory_pass}}
 
   :deploy-repositories {"clojars" {:url      "https://clojars.org/repo"
                                    :username :env/clojars_user
