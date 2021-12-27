@@ -1,27 +1,28 @@
 ;; Please don't bump the library version by hand - use ci.release-workflow instead.
-(defproject com.nedap.staffing-solutions/components.assets "3.0.1"
+(defproject com.nedap.staffing-solutions/components.assets "3.0.0"
   ;; Please keep the dependencies sorted a-z.
-  :dependencies [[com.nedap.staffing-solutions/stefon "0.5.2"
-                  :exclusions [clj-time commons-codec com.fasterxml.jackson.core/jackson-core]]
-                 [com.nedap.staffing-solutions/utils.io "2.0.0"
-                  :exclusions [com.nedap.staffing-solutions/speced.def
-                               org.apache.commons/commons-compress]]
-                 [com.nedap.staffing-solutions/speced.def "2.0.0"]
-                 [com.nedap.staffing-solutions/utils.modular "2.2.0"]
+  :dependencies [[circleci/stefon "7c36114923ef7ec41316e22354d2e31217a1a416"]
+                 [com.nedap.staffing-solutions/utils.io "2.0.0"]
+                 [com.nedap.staffing-solutions/speced.def "2.1.1"]
+                 [com.nedap.staffing-solutions/utils.modular "2.2.0-alpha3"]
                  [com.stuartsierra/component "0.4.0"]
                  [garden "1.3.5"]
                  [org.apache.commons/commons-compress "1.18"]
+                 [org.clojure/core.rrb-vector "0.1.2"]
                  [org.clojure/clojure "1.10.1"]
-                 [org.webjars/webjars-locator "0.27"
-                  :exclusions [org.apache.commons/commons-compress]]
+                 [org.webjars/webjars-locator "0.27"]
                  ;; Stefon needs it. We ensure a recent version is used, as the default (older) has an issue:
                  [ring/ring-core "1.5.0"]]
-
-  :managed-dependencies [[org.clojure/tools.cli "1.0.194"]]
+  
+  :managed-dependencies [[commons-codec "1.6"]]
 
   :description "Clojure Component bundling Stefon, Garden and WebJars functionality."
 
   :url "https://github.com/nedap/components.assets"
+
+  :git-down {circleci/stefon {:manifest-root "stefon-core"}}
+
+  :middleware [lein-git-down.plugin/inject-properties]
 
   :min-lein-version "2.0.0"
 
@@ -30,9 +31,7 @@
 
   :signing {:gpg-key "releases-staffingsolutions@nedap.com"}
 
-  :repositories        {"github" {:url "https://maven.pkg.github.com/nedap/*"
-                                  :username "github"
-                                  :password :env/github_token}}
+  :repositories {"public-github"   {:url "git://github.com"}}
 
   :deploy-repositories {"clojars" {:url      "https://clojars.org/repo"
                                    :username :env/clojars_user
@@ -43,7 +42,8 @@
 
   :monkeypatch-clojure-test false
 
-  :plugins [[lein-pprint "1.1.2"]]
+  :plugins [[lein-pprint "1.1.2"]
+            [reifyhealth/lein-git-down "0.4.0"]]
 
   ;; A variety of common dependencies are bundled with `nedap/lein-template`.
   ;; They are divided into two categories:
@@ -96,7 +96,7 @@
                           :test-paths     ^:replace []
                           :resource-paths ^:replace []
                           :plugins        ^:replace []
-                          :dependencies   ^:replace [[com.nedap.staffing-solutions/ci.release-workflow "1.14.1"]]}
+                          :dependencies   ^:replace [[com.nedap.staffing-solutions/ci.release-workflow "1.13.1"]]}
 
              :ci       {:pedantic?    :abort
                         :jvm-opts     ["-Dclojure.main.report=stderr"]}})
