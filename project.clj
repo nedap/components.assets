@@ -14,7 +14,11 @@
                  ;; Stefon needs it. We ensure a recent version is used, as the default (older) has an issue:
                  [ring/ring-core "1.5.0"]]
   
-  :managed-dependencies [[commons-codec "1.6"]]
+  :managed-dependencies [[clj-time "0.11.0"]
+                         [com.fasterxml.jackson.core/jackson-core "2.3.3"]
+                         [commons-codec "1.6"]
+                         [joda-time "2.8.2"]
+                         [org.clojure/tools.cli "1.0.194"]]
 
   :description "Clojure Component bundling Stefon, Garden and WebJars functionality."
 
