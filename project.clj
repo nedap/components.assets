@@ -1,5 +1,5 @@
 ;; Please don't bump the library version by hand - use ci.release-workflow instead.
-(defproject com.nedap.staffing-solutions/components.assets "3.0.1"
+(defproject com.nedap.staffing-solutions/components.assets "3.0.2-alpha1"
   ;; Please keep the dependencies sorted a-z.
   :dependencies [[circleci/stefon "7c36114923ef7ec41316e22354d2e31217a1a416"]
                  [com.nedap.staffing-solutions/utils.io "2.0.0"]
