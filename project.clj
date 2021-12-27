@@ -35,7 +35,10 @@
 
   :signing {:gpg-key "releases-staffingsolutions@nedap.com"}
 
-  :repositories {"public-github"   {:url "git://github.com"}}
+  :repositories {"github"          {:url "https://maven.pkg.github.com/nedap/*"
+                                    :username "github"
+                                    :password :env/github_token}
+                 "public-github"   {:url "git://github.com"}}
 
   :deploy-repositories {"clojars" {:url      "https://clojars.org/repo"
                                    :username :env/clojars_user
@@ -100,7 +103,7 @@
                           :test-paths     ^:replace []
                           :resource-paths ^:replace []
                           :plugins        ^:replace []
-                          :dependencies   ^:replace [[com.nedap.staffing-solutions/ci.release-workflow "1.13.1"]]}
+                          :dependencies   ^:replace [[com.nedap.staffing-solutions/ci.release-workflow "1.14.1"]]}
 
              :ci       {:pedantic?    :abort
                         :jvm-opts     ["-Dclojure.main.report=stderr"]}})
