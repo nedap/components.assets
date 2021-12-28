@@ -13,11 +13,13 @@ Note that no default options are provided for Stefon/Garden, as those will vary 
 
 ```clojure
 [com.nedap.staffing-solutions/components.assets "3.0.1"]
-````
+```
+
+Since `v4.0.0` the `nedap` fork for `circleci/stefon` was replaced by its upstream on Clojars. These versions have minor differences. If needed, you can use https://github.com/reifyhealth/lein-git-down to fetch `HEAD` for `circleci/stefon` from GitHub directly.
 
 #### NOTE
 
-You may have to apply ` exclusions [com.google.guava/guava com.google.protobuf/protobuf-java com.google.javascript/closure-compiler]` in order to prevent a ClojureScript compilation from popping up (which doesn't make sense in a JVM project) and failing the build.
+You may have to apply `exclusions [com.google.guava/guava com.google.protobuf/protobuf-java com.google.javascript/closure-compiler]` in order to prevent a ClojureScript compilation from popping up (which doesn't make sense in a JVM project) and failing the build.
 
 ## ns organisation
 
