@@ -1,23 +1,23 @@
 ;; Please don't bump the library version by hand - use ci.release-workflow instead.
 (defproject com.nedap.staffing-solutions/components.assets "3.0.1"
   ;; Please keep the dependencies sorted a-z.
-  :dependencies [[com.nedap.staffing-solutions/stefon "0.5.2"
-                  :exclusions [clj-time commons-codec com.fasterxml.jackson.core/jackson-core]]
-                 [com.nedap.staffing-solutions/utils.io "2.0.0"
-                  :exclusions [com.nedap.staffing-solutions/speced.def
-                               org.apache.commons/commons-compress]]
+  :dependencies [[circleci/stefon "0.5.0-20130815.014939-2"]
+                 [com.nedap.staffing-solutions/utils.io "2.0.0"]
                  [com.nedap.staffing-solutions/speced.def "2.0.0"]
                  [com.nedap.staffing-solutions/utils.modular "2.2.0"]
                  [com.stuartsierra/component "0.4.0"]
                  [garden "1.3.5"]
                  [org.apache.commons/commons-compress "1.18"]
                  [org.clojure/clojure "1.10.1"]
-                 [org.webjars/webjars-locator "0.27"
-                  :exclusions [org.apache.commons/commons-compress]]
+                 [org.webjars/webjars-locator "0.27"]
                  ;; Stefon needs it. We ensure a recent version is used, as the default (older) has an issue:
                  [ring/ring-core "1.5.0"]]
 
-  :managed-dependencies [[org.clojure/tools.cli "1.0.194"]]
+  :managed-dependencies [[clj-time "0.11.0"]
+                         [com.fasterxml.jackson.core/jackson-core "2.10.2"]
+                         [commons-codec "1.6"]
+                         [joda-time "2.8.2"]
+                         [org.clojure/tools.cli "1.0.194"]]
 
   :description "Clojure Component bundling Stefon, Garden and WebJars functionality."
 
