@@ -12,7 +12,7 @@ Note that no default options are provided for Stefon/Garden, as those will vary 
 ## Installation
 
 ```clojure
-[com.nedap.staffing-solutions/components.assets "3.0.1"]
+[com.nedap.staffing-solutions/components.assets "4.0.0"]
 ```
 
 Since `v4.0.0` the `nedap` fork for `circleci/stefon` was replaced by its upstream on Clojars. These versions have minor differences. If needed, you can use https://github.com/reifyhealth/lein-git-down to fetch `HEAD` for `circleci/stefon` from GitHub directly.
